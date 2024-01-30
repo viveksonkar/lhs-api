@@ -1,0 +1,30 @@
+{
+  "env": "development",
+  "secretKey": "secretKey",
+  "log": {
+    "format": "dev",
+    "dir": "../logs"
+  },
+  "cors": {
+    "origin": true,
+    "credentials": true
+  },
+  "dbConfig": {
+    "host": "localhost",
+    "user": "postgres",
+    "password": "shubham@1994",
+    "database": "postgres"
+  },
+  "aws": {
+    "accessKeyId": "AKIAQL5WIYKCWED2GP7C",
+    "secretAccessKey": "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",
+    "supplyxBucketName": "supplyx-static",
+    "bucketUrl": "https://supplyx-static.s3.us-east-2.amazonaws.com",
+    "cloudSearchDomainEndpoint": "search-supplyx-autocomplete-baz4fgofbphoge7brnww3womia.us-east-1.cloudsearch.amazonaws.com",
+    "cloudSearchDomainRegion": "us-east-1"
+  },
+  "daily": {
+    "url": "https://api.daily.co",
+    "apiKey": "6d24a6198adc4236d24ecf996d0ca3079bed59850dd9123dcac33adf456f86bd"
+  }
+}

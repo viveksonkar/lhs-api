@@ -1,0 +1,33 @@
+
+###
+# baseURL
+@baseURL = http://localhost:3000
+
+###
+# signup
+GET  {{baseURL}}/products/all
+Content-Type: application/json
+
+###
+# Get Products
+POST  {{baseURL}}/products/all
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzZWxsZXJTYW1AZ21haWwuY29tIiwicm9sZVR5cGUiOiIyIiwiaWF0IjoxNjQ0MDgzMjU0LCJleHAiOjE2NDQwOTc2NTR9.NvkIv99EZQtgKDLef2WxoIag3XIGdjdXNmNS2FU3lsc
+
+{
+    "page": 0,
+    "take": 10,
+    "status": "active"
+}
+
+
+###
+# update Product Status By Id
+POST  {{baseURL}}/products/status/34
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzZWxsZXJTYW1AZ21haWwuY29tIiwicm9sZVR5cGUiOiIyIiwiaWF0IjoxNjQ0MTY5OTk4LCJleHAiOjE2NDQyMTMxOTh9.6JN3T8WF4k4kFQMBYjylDBoIxVJponYCr8srk4T3iMQ
+
+{
+    "status": "inactive"
+}
+

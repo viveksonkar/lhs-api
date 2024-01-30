@@ -1,0 +1,45 @@
+# Chat API
+
+###
+# baseURL
+@baseURL = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJidXllcmJvYkBnbWFpbC5jb20iLCJyb2xlVHlwZSI6IkJVWUVSIiwiaWF0IjoxNjk1MjA5ODU3LCJleHAiOjE2OTUyNTMwNTd9.IUqr8xxBfOOqtSoenAosUwTLizG0ozuY_cIR-Q8rC9Q
+
+###
+# Send Chat Message
+POST {{baseURL}}/chats/message/send
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "type": "CHAT_SEND",
+  "data":  {
+      "from": 3,
+      "to": 5,
+      "message": "This is first message"
+    }
+}
+
+
+###
+# Find Conversation by Id
+GET {{baseURL}}/chats/conversations/15
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+# Find all conversation from User
+GET {{baseURL}}/chats/conversations
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+# Send Conversation ById
+POST {{baseURL}}/chats/conversationByUsers
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "from": 3,
+  "to": 4
+}

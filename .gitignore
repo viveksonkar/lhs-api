@@ -1,0 +1,13 @@
+node_modules
+<<<<<<< HEAD
+=======
+pgadmin-data
+pgdata
+debug
+error
+>>>>>>> e96eb4209dbb9bb7b35e010710f783004185b64e
+logs
+dist
+/package-lock.zip
+/dist.zip
+.idea

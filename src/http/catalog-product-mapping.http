@@ -1,0 +1,32 @@
+# Catalog Product Mapping API
+
+###
+# baseURL
+@baseURL = http://localhost:3000
+
+###
+# Add products into catalog
+POST {{baseURL}}/catalogs
+Content-Type: application/json
+
+{
+    "id": 1,
+    "productIds": [1, 2, 3, 4]
+}
+
+
+###
+# Get products from catalog
+GET  {{baseURL}}/catalogs/1
+Content-Type: application/json
+
+###
+# Delete products from catalog
+DELETE {{baseURL}}/catalogs
+Content-Type: application/json
+
+{
+    "id": 1,
+    "productIds": [3, 4]
+}
+

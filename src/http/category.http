@@ -1,0 +1,15 @@
+# Category API
+
+###
+# baseURL
+@baseURL = http://localhost:3000
+
+###
+# Add products into catalog
+POST {{baseURL}}/categories
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzZWxsZXJTYW1AZ21haWwuY29tIiwicm9sZVR5cGUiOiIyIiwiaWF0IjoxNjQ0MTUwMzA3LCJleHAiOjE2NDQxOTM1MDd9.HW1r3Z3X5ozTW6iKCjbDdkbccM2_-G3H_VyvjbfA-ws
+
+{
+    "name": "Appliances"
+}

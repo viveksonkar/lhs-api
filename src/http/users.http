@@ -1,0 +1,56 @@
+# users API
+
+###
+# baseURL
+#@baseURL = http://localhost:3000
+@baseURL = https://api.ideaboxventures.com/
+
+###
+# Find All Users
+GET {{baseURL}}/users
+
+###
+# Find User By Id
+GET {{baseURL}}/users/1
+
+
+###
+# Add User
+POST {{baseURL}}/users
+Content-Type: application/json
+
+{
+    "email": "buyerbob@gmail.com",
+	"password": "buyer",
+    "confirmPassword": "buyer",
+    "roleType": "2",
+    "firstName":"Bob",
+    "lastName":"Buyer",
+    "companyName": "ABC Trading company"
+}
+
+###
+# Edit User By Id
+PUT {{baseURL}}/users/1
+Content-Type: application/json
+
+{
+    "email": "parul.agrawal@gmail.com",
+	"password": "qwer1234",
+    "firstName":"test",
+    "lastName":"test"
+}
+
+###
+# Del User By Id
+DELETE {{baseURL}}/users/1
+
+###
+# Find All Video Drafts
+POST {{baseURL}}/users/all
+Content-Type: application/json
+
+{
+    "page": 0,
+	"take": 10
+}
