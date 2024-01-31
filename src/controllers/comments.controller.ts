@@ -2,17 +2,17 @@ import { AddCommentsDto } from "@/dtos/comments.dto";
 import { Comments } from "@/interfaces/comments.interface";
 import { validationMiddleware } from "@/middlewares/validation.middleware";
 import CommentsService from "@/services/comments.service";
-import { Body, Controller, Get, HttpCode, Post, UseBefore } from "routing-controllers";
+import { Body, Controller, Get, HttpCode, Param, Post, UseBefore } from "routing-controllers";
 
 @Controller() 
 export class CommentsController {
 
     public commentSerice = new CommentsService();
 
-    @Post('/comments')
+    @Get('/comments/:id')
     /* @UseBefore(authMiddleware) */
-    async getCommentsByUserId(@Body() userId: number) {
-         const comments: Comments[] = await this.commentSerice.getCommentsById(userId);
+    async getCommentsByUserId(@Param('id') id: number) {
+         const comments: Comments[] = await this.commentSerice.getCommentsById(id);
         return { data: comments, message: 'Comments retrieved'} 
     }
 

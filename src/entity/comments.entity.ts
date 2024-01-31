@@ -14,4 +14,7 @@ export class CommentsEntity extends BaseEntity implements Comments {
     @Column() 
     customerId: number;
 
+    @Column({ name: 'comment_date', nullable: true })
+    commentDate: Date | null;
+
 }

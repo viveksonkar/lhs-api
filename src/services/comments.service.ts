@@ -9,15 +9,20 @@ class CommentsService {
     public async getCommentsById(customerId: number): Promise<Comments[]> {
         const commentsRepo: Repository<CommentsEntity> = getRepository(CommentsEntity);
         const comments: Comments[] = await commentsRepo.find({
-            where: { customerId: customerId }
-            }
+            where: { customerId: customerId },
+            order: { id: "DESC" }
+            }   
         )
         return comments;
     }
 
     public async addComment( addCommentsDto: AddCommentsDto): Promise<Comments> {
         const commentsRepo: Repository<CommentsEntity> = getRepository(CommentsEntity);
-        const savedComment = await commentsRepo.save(addCommentsDto)
+        const newComments = {
+            ...addCommentsDto,
+            commentDate: new Date()
+        }
+        const savedComment = await commentsRepo.save(newComments)
         return savedComment
     }
 
