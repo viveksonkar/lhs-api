@@ -60,7 +60,7 @@ class AuthService {
 
         public async getAllHAccessHandlers(searchHandlerDto: SearcHandlerOptionDto): Promise<User[]> {
           const userRepo: Repository<User> = getRepository(UserEntity)
-          if (!searchHandlerDto.email) {
+          if (!searchHandlerDto.email && !searchHandlerDto.mobile) {
             const results: User[] = await userRepo.find({
               where: {
                 roleType: 'HANDLER'
@@ -69,11 +69,20 @@ class AuthService {
             return results
           }
 
-          if(searchHandlerDto) {
+          if(searchHandlerDto.email && !searchHandlerDto.mobile ) {
             const results: User[] = await userRepo.find({
               where: {
                 roleType: 'HANDLER',
                 email: searchHandlerDto.email
+              }
+            })
+            return results
+          }
+          if(searchHandlerDto.mobile && !searchHandlerDto.email) {
+            const results: User[] = await userRepo.find({
+              where: {
+                roleType: 'HANDLER',
+                mobile: searchHandlerDto.mobile
               }
             })
             return results

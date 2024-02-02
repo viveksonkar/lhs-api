@@ -13,4 +13,8 @@ export class SearcHandlerOptionDto {
     @IsString()
     @IsOptional()
     email: string;
+
+    @IsString()
+    @IsOptional()
+    mobile: string;
 }
