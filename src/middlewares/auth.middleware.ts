@@ -2,10 +2,11 @@ import config from 'config';
 import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { HttpException } from '@exceptions/HttpException';
-import { User } from '@interfaces/users.interface';
 import { DataStoredInToken, RequestWithUser } from '@interfaces/auth.interface';
 import { getRepository, Repository } from 'typeorm';
-import { UserEntity } from '@/entity/users.entity';
+import { UserEntity } from '@/entity/user.entity';
+import { User } from '@/interfaces/user.interface';
+
 
 const authMiddleware = async (req: RequestWithUser, res: Response, next: NextFunction) => {
   try {

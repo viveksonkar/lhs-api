@@ -27,7 +27,7 @@ export class AuthController {
     }
 
     @Post('/addUser')
-    /* @UseBefore(authMiddleware) */
+    @UseBefore(authMiddleware)
     @UseBefore(validationMiddleware(CreateUserDto, 'body'))
     async addHandler(@Body() createUserDto: CreateUserDto) {
       const addHandler: User = await this.authService.addHandler(createUserDto);
@@ -35,7 +35,7 @@ export class AuthController {
     }
 
     @Post('/users')
-     /* @UseBefore(authMiddleware) */
+     @UseBefore(authMiddleware)
      @UseBefore(validationMiddleware(SearcHandlerOptionDto, 'body'))
      @HttpCode(200)
      async fetchHandlers(@Body() searchHandlerDto: SearcHandlerOptionDto ) {

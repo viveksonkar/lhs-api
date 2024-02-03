@@ -22,7 +22,7 @@ export class CustomerController {
     }
 
     @Post('/addCustomer')
-    /* @UseBefore(authMiddleware) */
+    @UseBefore(authMiddleware)
     @UseBefore(validationMiddleware(AddCustomerDto, 'body'))
     @HttpCode(200)
     async addCustomer(@Body() addCustomerDto: AddCustomerDto) {
@@ -32,7 +32,7 @@ export class CustomerController {
 
     
   @Post('/deleteCustomer')
- // @UseBefore(authMiddleware)
+ @UseBefore(authMiddleware)
  @UseBefore(validationMiddleware(DeleteMigrateDto, 'body'))
   @HttpCode(200)
   async deleteFile(@Body() deleteMigrate:  DeleteMigrateDto) {
