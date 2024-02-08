@@ -16,7 +16,7 @@ services:
 
   pgadmin:
     container_name: pd-admin
-    image: dpage/pgadmin4:6.8
+    image: dpage/pgadmin4:6.15
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@lhs.org

@@ -10,7 +10,7 @@
     "credentials": true
   },
   "dbConfig": {
-    "host": "lhsdb.crmoqukg4so0.us-east-1.rds.amazonaws.com",
+    "host": "ec2-54-172-24-23.compute-1.amazonaws.com",
     "user": "lhsroot",
     "password": "lhsadmin",
     "database": "lhsDB"
