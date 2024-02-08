@@ -10,10 +10,10 @@
     "credentials": true
   },
   "dbConfig": {
-    "host": "localhost",
-    "user": "postgres",
-    "password": "shubham@1994",
-    "database": "postgres"
+    "host": "lhsdb.crmoqukg4so0.us-east-1.rds.amazonaws.com",
+    "user": "lhsroot",
+    "password": "lhsadmin",
+    "database": "lhsDB"
   },
   "aws": {
     "accessKeyId": "AKIAQL5WIYKCWED2GP7C",
