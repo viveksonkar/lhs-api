@@ -1,19 +1,5 @@
 version: '3'
 services:
-#  api:
-#    container_name: supplyx-api
-#    depends_on: postgres
-#    build: 
-#      context: .
-#      dockerfile: Dockerfile
-#    ports:
-#      - 3000:3000
-#    environment:
-#      POSTGRES_HOST: postgres:whybuyadmin123@postgres:5432
-#      PORT: 3000
-#    links:
-#      - postgres
-
   postgres:
     container_name: postgres
     restart: always
@@ -21,20 +7,20 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: SupplyX2022!
-      POSTGRES_USER: supplyx
-      POSTGRES_DB: supplyxDB
+      POSTGRES_PASSWORD: lhsadmin
+      POSTGRES_USER: lhsroot
+      POSTGRES_DB: lhsDB
       PDDATA: /var/lib/postgressql/data
     volumes:
       - ./pgdata:/var/lib/postgressql/data
 
   pgadmin:
     container_name: pd-admin
-    image: dpage/pgadmin4:4.18
+    image: dpage/pgadmin4:6.15
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@supplyx
-      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_DEFAULT_EMAIL: admin@lhs.org
+      PGADMIN_DEFAULT_PASSWORD: lhsadmin123
       PGADMIN_LISTEN_PORT: 3500
     ports:
       - "3500:3500"
