@@ -8,8 +8,8 @@ class GoogleAuthService {
     initializeGoogleStratergy() {
         passport.use(
           new GoogleStrategy({
-            clientID: '177168581023-tsoeekln3q0fipv3044u3ettq5av771s.apps.googleusercontent.com',
-            clientSecret: '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',
+            clientID: '',
+            clientSecret: '',
             callbackURL: 'http://localhost:3000/auth/google/callback',
             scope: ["profile", "email"],
           }, (accessToken: any, refreshToken: any, profile: any, done:any) => {
