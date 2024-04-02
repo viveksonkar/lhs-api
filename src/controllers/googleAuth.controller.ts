@@ -1,19 +1,13 @@
 import GoogleAuthService from "@/services/googleAuthService";
 import { Controller, Get, Redirect, Req, Res, UseBefore, } from "routing-controllers";
-import express from 'express';
-import { Router } from 'express'
 import passport from 'passport';
 import { Request, Response } from 'express';
-import errorMiddleware from "@/middlewares/error.middleware";
-import passportMiddleWare from "@/passport-setup";
-import authMiddleware from "@/middlewares/auth.middleware";
 
 @Controller() 
 export class GoogleAuthController {
 
 
     public _gAuth = new GoogleAuthService();
-     router = Router();
 
     @Get('/auth/google')
      async googleLogIn(@Req() req: Request, @Res() res: Response) {
