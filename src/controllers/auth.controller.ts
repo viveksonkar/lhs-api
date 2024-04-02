@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { Controller, Req, Body, Post, UseBefore, HttpCode, Res, Put } from 'routing-controllers';
+import { Controller, Req, Body, Post, UseBefore, HttpCode, Res, Put, Get } from 'routing-controllers';
 //import { CreateUserDto } from '@/dtos/User.dto';
 import { LoginUserDto } from '@/dtos/LoginUserDto';
 import { RequestWithUser } from '@interfaces/auth.interface';
@@ -8,7 +8,6 @@ import authMiddleware from '@middlewares/auth.middleware';
 import { validationMiddleware } from '@middlewares/validation.middleware';
 import AuthService from '@services/auth.service';
 import { CreateUserDto } from '@/dtos/user.dto';
-import { create } from 'domain';
 import { SearcHandlerOptionDto, SearchOptionDto } from '@/dtos/search-option.dto';
 
 
@@ -27,7 +26,7 @@ export class AuthController {
     }
 
     @Post('/addUser')
-    @UseBefore(authMiddleware)
+    /* @UseBefore(authMiddleware) */
     @UseBefore(validationMiddleware(CreateUserDto, 'body'))
     async addHandler(@Body() createUserDto: CreateUserDto) {
       const addHandler: User = await this.authService.addHandler(createUserDto);
@@ -35,11 +34,13 @@ export class AuthController {
     }
 
     @Post('/users')
-     @UseBefore(authMiddleware)
+     /* @UseBefore(authMiddleware) */
      @UseBefore(validationMiddleware(SearcHandlerOptionDto, 'body'))
      @HttpCode(200)
      async fetchHandlers(@Body() searchHandlerDto: SearcHandlerOptionDto ) {
         const findAllHandlers = await this.authService.getAllHAccessHandlers(searchHandlerDto)
         return { data: findAllHandlers, message: 'Handlers retrieved successfully' }
      }
+     
+    
 }

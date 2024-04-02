@@ -1,6 +1,7 @@
 import * as bcrypt from 'bcryptjs';
 import config from 'config';
 import jwt from 'jsonwebtoken';
+import express from 'express'; 
 //import { CreateUserDto } from '@dtos/User.dto';
 import { LoginUserDto } from '@/dtos/LoginUserDto';
 import { HttpException } from '@exceptions/HttpException';
@@ -12,6 +13,7 @@ import { UserEntity } from '@/entity/user.entity';
 import { isEmpty } from '@utils/util';
 import { CreateUserDto } from '@/dtos/user.dto';
 import { SearcHandlerOptionDto } from '@/dtos/search-option.dto';
+import passport from 'passport'
 
 class AuthService {
 
