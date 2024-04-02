@@ -19,7 +19,7 @@ const authMiddleware = async (req: RequestWithUser, res: Response, next: NextFun
       const findUser: User = await userRepo.findOne({
         "id": userId 
       });
-
+      
       if (findUser) {
         delete findUser.password
         req.user = findUser;

@@ -8,7 +8,7 @@ import express from 'express';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import morgan from 'morgan';
-import { useExpressServer, getMetadataArgsStorage } from 'routing-controllers';
+import { useExpressServer, getMetadataArgsStorage, Session } from 'routing-controllers';
 import { routingControllersToSpec } from 'routing-controllers-openapi';
 import swaggerUi from 'swagger-ui-express';
 import { createConnection } from 'typeorm';
@@ -17,8 +17,9 @@ import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
-import path from 'path';
-import { scheduleJob } from 'node-schedule';
+ import passport, { initialize } from 'passport';
+import session from 'express-session';
+import { Strategy as GoogleStrategy, Profile } from 'passport-google-oauth20';
 
 class App {
   public app: express.Application;
@@ -28,19 +29,29 @@ class App {
   public httpServer: any;
 
   constructor(Controllers: Function[]) {
+   
     this.app = express();
+    this.app.use(session({
+      resave: false,
+      saveUninitialized: true,
+      secret: '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'
+  }));
+    this.app.use(passport.initialize());
+    this.app.use(passport.session());
     this.port = process.env.PORT || 3000;
     this.env = process.env.NODE_ENV || 'development';
+
 
     this.connectToDatabase();
     this.initializeMiddlewares();
     this.initializeRoutes(Controllers);
     this.initializeSwagger(Controllers);
     this.initializeErrorHandling();
-    this.initializeWebSocket()
+    this.initializeWebSocket();
     //this.initializeWebRtc();
     /* this.initializeScheduledJobs(); */
   }
+
 
   public listen() {
     /* this.app.listen(this.port, () => {
@@ -73,7 +84,7 @@ class App {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cookieParser());
-  }
+    }
 
   private initializeRoutes(controllers: Function[]) {
     useExpressServer(this.app, {
@@ -85,6 +96,7 @@ class App {
       defaultErrorHandler: false,
     });
   }
+    
 
   private initializeSwagger(controllers: Function[]) {
     const { defaultMetadataStorage } = require('class-transformer/cjs/storage');

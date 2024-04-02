@@ -11,14 +11,14 @@ export class CommentsController {
     public commentSerice = new CommentsService();
 
     @Get('/comments/:id')
-    @UseBefore(authMiddleware)
+    /* @UseBefore(authMiddleware) */
     async getCommentsByUserId(@Param('id') id: number) {
          const comments: Comments[] = await this.commentSerice.getCommentsById(id);
         return { data: comments, message: 'Comments retrieved'} 
     }
 
     @Post('/addComments')
-    @UseBefore(authMiddleware)
+    /* @UseBefore(authMiddleware) */
     @UseBefore(validationMiddleware( AddCommentsDto, 'body'))
     @HttpCode(200)
     async addComments(@Body() addCommentsDto: AddCommentsDto) {

@@ -8,6 +8,8 @@ import validateEnv from './utils/validateEnv';
 import { AuthController } from '@controllers/auth.controller';
 import { CustomerController } from './controllers/customer.controller';
 import { CommentsController } from './controllers/comments.controller';
+import { StripeController } from './controllers/stripe.controller';
+import { GoogleAuthController } from './controllers/googleAuth.controller';
 
 
 validateEnv();
@@ -15,7 +17,10 @@ validateEnv();
 const app = new App([
   AuthController,
   CustomerController,
-  CommentsController
+  CommentsController,
+  StripeController,
+  GoogleAuthController
   
 ]);
+
 app.listen();
