@@ -8,10 +8,10 @@ class GoogleAuthService {
     initializeGoogleStratergy() {
         passport.use(
           new GoogleStrategy({
-            clientID: '',
+          /*   clientID: '',
             clientSecret: '',
             callbackURL: 'http://localhost:3000/auth/google/callback',
-            scope: ["profile", "email"],
+            scope: ["profile", "email"], */
           }, (accessToken: any, refreshToken: any, profile: any, done:any) => {
             
             // This callback will be invoked after user authentication
